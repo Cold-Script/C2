@@ -1,0 +1,41 @@
+local ESP = {}
+local function Billboard(child, name, color, title)
+    local Billboard = Instance.new("BillboardGui")
+    Billboard.Active = true
+    Billboard.AlwaysOnTop = true
+    Billboard.ClipsDescendants = true
+    Billboard.LightInfluence = 1
+    Billboard.Size = UDim2.new(100, 0, 100, 0)
+    Billboard.ResetOnSpawn = false
+    Billboard.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    Billboard.Parent = child
+    Billboard.Name = title
+    local Title = Instance.new("TextLabel")
+    Title.Text = name
+    Title.TextSize = 14
+    Title.Font = "Oswald"
+    Title.TextColor3 = color
+    Title.BackgroundColor3 = Color3.new(1, 1, 1)
+    Title.BackgroundTransparency = 1
+    Title.BorderColor3 = Color3.new(0, 0, 0)
+    Title.BorderSizePixel = 0
+    Title.Size = UDim2.new(1, 0, 1, 0)
+    Title.Visible = true
+    Title.Parent = Billboard
+    local uistroke = Instance.new("UIStroke")
+    uistroke.Thickness = 1
+    uistroke.Parent = Title
+end
+local function ESP:Highlight(child, name, color, title)
+    Billboard(child, name, color, title)
+    local Highlight = Instance.new("Highlight")
+    Highlight.Parent = child
+    Highlight.Adornee = child
+    Highlight.FillTransparency = 0.65
+    Highlight.OutlineTransparency = 0
+    Highlight.Name = title
+    Highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+    Highlight.OutlineColor = Color3.new(1,1,1)
+    Highlight.FillColor = color
+end
+return ESP
